@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學生會成立沿革 · 關於我們</title>
+    <!-- Font Awesome 6 (免費) 用於圖標 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* 頁首 */
+        .hero {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+            border-radius: 0 0 3rem 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+            font-weight: 300;
+        }
+
+        .hero .established {
+            display: inline-block;
+            background-color: rgba(255,255,255,0.15);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* 章節通用 */
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: #2a5298;
+            border-radius: 2px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #e9eef2;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.05);
+            border-color: #cbd5e1;
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            color: #2a5298;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #0f172a;
+        }
+
+        .card p {
+            color: #475569;
+        }
+
+        /* 時間軸 */
+        .timeline {
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #cbd5e1;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 8px;
+            top: 0;
+            width: 28px;
+            height: 28px;
+            background: #2a5298;
+            border: 4px solid white;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 2;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            border: 1px solid #eef2f6;
+        }
+
+        .timeline-content h4 {
+            font-size: 1.3rem;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content .date {
+            color: #2a5298;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        /* 歷屆會長/核心幹部 */
+        .leaders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .leader-card {
+            text-align: center;
+            background: white;
+            padding: 1.5rem 1rem;
+            border-radius: 1rem;
+            border: 1px solid #eef2f6;
+            transition: all 0.2s;
+        }
+
+        .leader-card:hover {
+            border-color: #b9c9da;
+        }
+
+        .leader-card .avatar {
+            width: 100px;
+            height: 100px;
+            background: #e2e8f0;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #64748b;
+            border: 3px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .leader-card h4 {
+            font-size: 1.2rem;
+            color: #0f172a;
+        }
+
+        .leader-card .role {
+            color: #2a5298;
+            font-weight: 500;
+            margin: 0.25rem 0 0.5rem;
+        }
+
+        .leader-card .term {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* 頁尾 */
+        .footer {
+            background: #1e293b;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 3rem 3rem 0 0;
+            margin-top: 4rem;
+        }
+
+        .footer a {
+            color: #94a3b8;
+            text-decoration: none;
+            border-bottom: 1px dotted #475569;
+        }
+
+        .footer a:hover {
+            color: white;
+            border-bottom-color: white;
+        }
+
+        /* 響應式微調 */
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 2.2rem; }
+            .section-title { font-size: 1.8rem; }
+            .timeline::before { left: 16px; }
+            .timeline-item { padding-left: 50px; }
+            .timeline-marker { left: 4px; width: 24px; height: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 首部英雄區 -->
+    <section class="hero">
+        <div class="container">
+            <h1>學生會 · 成立沿革</h1>
+            <div class="subtitle">服務 · 自治 · 傳承</div>
+            <div class="established">
+                <i class="fas fa-calendar-alt" style="margin-right: 8px;"></i> 成立於 1998 年 · 深耕校園二十餘載
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <!-- 簡介與宗旨 -->
+        <section>
+            <h2 class="section-title">關於我們</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 1.5rem; color: #334155;">
+                國立○○大學學生會（以下簡稱學生會）自民國87年成立以來，始終以「維護學生權益、促進校園民主、豐富課外活動」為核心使命。
+                作為全校唯一具有法定代表性的學生自治組織，我們致力於搭建學生與學校之間的溝通橋樑，並推動各項校園改革與福利措施。
+            </p>
+            <p style="color: #475569;">
+                從最初的草創時期僅數十位會員，發展至今涵蓋各學系、研究所，學生會持續透過定期座談、權益申訴管道、大型活動舉辦等方式，
+                具體實踐「學生自治」的精神。我們的組織架構包含會長、副會長、行政中心、學生議會及評議委員會，分別掌理行政、立法及司法權，
+                體現三權分立的民主運作。
+            </p>
+        </section>
+
+        <!-- 核心價值卡片 -->
+        <div class="card-grid">
+            <div class="card">
+                <i class="fas fa-hand-holding-heart"></i>
+                <h3>權益守護</h3>
+                <p>設立權益部與法務諮詢，協助同學解決校園事務問題，推動校務會議學生代表制，讓學生意見被聽見。</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-calendar-check"></i>
+                <h3>活動舉辦</h3>
+                <p>每年舉辦耶誕晚會、校園演唱會、社團博覽會等大型活動，豐富校園文化生活。</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-chalkboard-user"></i>
+                <h3>學術促進</h3>
+                <p>不定期舉辦講座、工作坊，邀請各界人士分享，並發行學生刊物，鼓勵思辨與創作。</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-scale-balanced"></i>
+                <h3>自治傳承</h3>
+                <p>完善的幹部培訓與交接制度，確保學生會經驗與精神能代代相傳，永續經營。</p>
+            </div>
+        </div>
+
+        <!-- 成立里程碑 (時間軸) -->
+        <section style="margin-top: 3rem;">
+            <h2 class="section-title">重要里程碑</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-marker"></span>
+                    <div class="timeline-content">
+                        <span class="date">1998 年 9 月</span>
+                        <h4>學生會正式成立</h4>
+                        <p>經由全校學生投票通過組織章程，第一屆會長與學生代表選舉順利舉行，學生自治組織誕生。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-marker"></span>
+                    <div class="timeline-content">
+                        <span class="date">2003 年</span>
+                        <h4>爭取校務會議學生席次</h4>
+                        <p>成功修改組織規程，保障學生會會長及學生代表固定席次，正式參與校務最高決策會議。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-marker"></span>
+                    <div class="timeline-content">
+                        <span class="date">2010 年</span>
+                        <h4>建立專屬辦公空間</h4>
+                        <p>在學生活動中心二樓設置學生會辦公室，並開放權益服務櫃台，提供同學即時協助。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-marker"></span>
+                    <div class="timeline-content">
+                        <span class="date">2018 年</span>
+                        <h4>數位轉型 · 線上服務上線</h4>
+                        <p>推出官方網站、整合社群媒體，並建立線上表單系統，讓會務更透明、參與更便利。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-marker"></span>
+                    <div class="timeline-content">
+                        <span class="date">2024 年</span>
+                        <h4>新建合署辦公大樓落成</h4>
+                        <p>學生會連同各社團進駐新的綜合大樓，擁有更完善的硬體設備，持續為同學服務。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 歷屆會長 (範例資料) -->
+        <section style="margin-top: 4rem;">
+            <h2 class="section-title">歷屆會長 (近五屆)</h2>
+            <div class="leaders-grid">
+                <div class="leader-card">
+                    <div class="avatar"><i class="fas fa-user-graduate"></i></div>
+                    <h4>王小明</h4>
+                    <div class="role">第 26 屆會長</div>
+                    <div class="term">2024 - 2025</div>
+                </div>
+                <div class="leader-card">
+                    <div class="avatar"><i class="fas fa-user-graduate"></i></div>
+                    <h4>李詩涵</h4>
+                    <div class="role">第 25 屆會長</div>
+                    <div class="term">2023 - 2024</div>
+                </div>
+                <div class="leader-card">
+                    <div class="avatar"><i class="fas fa-user-graduate"></i></div>
+                    <h4>張育誠</h4>
+                    <div class="role">第 24 屆會長</div>
+                    <div class="term">2022 - 2023</div>
+                </div>
+                <div class="leader-card">
+                    <div class="avatar"><i class="fas fa-user-graduate"></i></div>
+                    <h4>陳怡君</h4>
+                    <div class="role">第 23 屆會長</div>
+                    <div class="term">2021 - 2022</div>
+                </div>
+                <div class="leader-card">
+                    <div class="avatar"><i class="fas fa-user-graduate"></i></div>
+                    <h4>吳家豪</h4>
+                    <div class="role">第 22 屆會長</div>
+                    <div class="term">2020 - 2021</div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 2rem; color: #64748b;">
+                <i class="fas fa-chevron-circle-right" style="margin-right: 6px;"></i>
+                完整歷屆幹部名單請見<a href="#" style="color:#2a5298;">學生會檔案室</a>
+            </p>
+        </section>
+
+        <!-- 現任團隊/聯絡資訊 (簡易) -->
+        <section style="margin: 4rem 0; background: #eef2f6; padding: 2.5rem; border-radius: 2rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #0f172a;">攜手向前</h2>
+            <p style="font-size: 1.1rem; max-width: 700px;">
+                學生會的每一頁歷史，都是由無數投入熱情的同學共同寫下。無論你是想了解會務、尋求協助，或是希望加入我們，
+                都歡迎來到學生會辦公室，或透過以下管道與我們聯繫。
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 2rem;">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <i class="fas fa-map-pin" style="font-size: 1.8rem; color: #2a5298;"></i>
+                    <span>學生活動中心 2F · 學生會辦公室</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <i class="fas fa-envelope" style="font-size: 1.8rem; color: #2a5298;"></i>
+                    <span>su@example.edu.tw</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <i class="fab fa-facebook" style="font-size: 1.8rem; color: #2a5298;"></i>
+                    <span>@YourStudentUnion</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <i class="fab fa-instagram" style="font-size: 1.8rem; color: #2a5298;"></i>
+                    <span>@su_ig_official</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 頁尾 -->
+    <footer class="footer">
+        <div class="container">
+            <p style="margin-bottom: 1rem;">國立○○大學學生會 · 版權所有</p>
+            <p style="font-size: 0.9rem;">
+                本網站使用 GitHub Pages 建置 · 
+                <a href="#">隱私權聲明</a> · 
+                <a href="#">回到首頁</a>
+            </p>
+            <p style="margin-top: 1.5rem; font-size: 0.85rem;">
+                <i class="fas fa-code-branch"></i> 最後更新：2026 年 2 月
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
